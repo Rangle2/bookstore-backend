@@ -49,7 +49,13 @@ public class UserController {
    @PostMapping("/login")
    public ResponseEntity<String> loginAuth(@RequestBody UserRequest userRequest) throws Exception {
         String token =  userService.authUser(userRequest);
-        return new ResponseEntity<>(token, HttpStatus.ACCEPTED);
+        if (token != null){
+            return new ResponseEntity<>(token, HttpStatus.ACCEPTED);
+        }else {
+            // If username or password wrong the result will return 401 UNAUTHORIZED
+            return new ResponseEntity<>(token, HttpStatus.UNAUTHORIZED);
+        }
+
    }
 
 

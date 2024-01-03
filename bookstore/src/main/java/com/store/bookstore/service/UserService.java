@@ -116,8 +116,8 @@ public class UserService {
             return jwtService.generateToken(existingUser.getUsername());
         } else {
             // User not found or password incorrect
-            // Exception
-            throw new Exception("Invalid username or password");
+            return null;
+
         }
     }
 
