@@ -121,8 +121,6 @@ public class UserService {
         }
     }
 
-
-
     @Transactional
     public User editUserById(UserChangeRequest userChangeRequest, Long userId) {
         User existingUser = userRepository.findById(userId).orElse(null);
