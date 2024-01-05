@@ -26,17 +26,17 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/create/{productId}")
     public Category createCategory(@RequestBody CategoryRequest categoryRequest, @PathVariable Long productId){
         return categoryService.createCategory(categoryRequest, productId);
     }
 
-    @PutMapping("/edit/{categoryId}")
+    @PutMapping("/edit/{categoryId}/{productId}")
     public Category editCategory(@RequestBody CategoryRequest categoryRequest, @PathVariable Long categoryId, @PathVariable Long productId) {
         return categoryService.editCategory(categoryRequest, categoryId, productId);
     }
 
-    @DeleteMapping("delete/{categoryId}")
+    @DeleteMapping("delete/{categoryId}/{productId}")
     public void deleteCategory(@RequestBody CategoryRequest categoryRequest, @PathVariable Long categoryId, @PathVariable Long productId) {
         categoryService.deleteCategory(categoryId, productId);
     }
