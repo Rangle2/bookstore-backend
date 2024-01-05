@@ -31,6 +31,7 @@ public class ProductService {
         newProduct.setName(productRequest.getName());
         newProduct.setDescription(productRequest.getDescription());
         newProduct.setPrice(productRequest.getPrice());
+        newProduct.setImgLink(productRequest.getImgLink());
         return productRepository.save(newProduct);
     }
 
@@ -40,6 +41,7 @@ public class ProductService {
             existingProduct.setName(productRequest.getName());
             existingProduct.setDescription(productRequest.getDescription());
             existingProduct.setPrice(productRequest.getPrice());
+            existingProduct.setImgLink(productRequest.getImgLink());
             return productRepository.save(existingProduct);
         }else {
             return null;

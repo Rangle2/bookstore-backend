@@ -24,4 +24,7 @@ public class Product {
 
     @Column(name = "categoryName")
     private String categoryName;
+
+    @Column(name = "imgLink")
+    private String imgLink;
 }
