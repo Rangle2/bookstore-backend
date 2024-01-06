@@ -21,10 +21,11 @@ public class Product {
 
     @Column(name = "price")
     private double price;
-
-    @Column(name = "categoryName")
-    private String categoryName;
-
+    
     @Column(name = "imgLink")
     private String imgLink;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

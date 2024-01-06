@@ -33,10 +33,6 @@ public class CategoryService {
 
     public Category createCategory(CategoryRequest categoryRequest, Long productId) {
 
-        String categoryName = categoryRequest.getCategoryName();
-
-        Category newCategory = new Category();
-        newCategory.setCategoryName(categoryRequest.getCategoryName());
         Category existingCategory = categoryRepository.getByCategoryName(categoryRequest.getCategoryName());
 
         if (existingCategory == null) {
@@ -47,9 +43,9 @@ public class CategoryService {
 
 
         Product product = productRepository.findById(productId).orElse(null);
-        product.setCategoryName(categoryName);
-
+        product.setCategory(existingCategory);
         productRepository.save(product);
+
 
         return existingCategory;
 
@@ -57,23 +53,29 @@ public class CategoryService {
 
     public Category editCategory(CategoryRequest categoryRequest, Long categoryId, Long productId) {
         Category existingCategory = categoryRepository.getByCategoryId(categoryId);
+
         if (existingCategory != null) {
             existingCategory.setCategoryName(categoryRequest.getCategoryName());
             categoryRepository.save(existingCategory);
-            String newCategoryName = categoryRequest.getCategoryName();
+
             Product product = productRepository.findById(productId).orElse(null);
-            product.setCategoryName(newCategoryName);
-            productRepository.save(product);
+            if (product != null) {
+                product.setCategory(existingCategory);  // Update Product Category
+                productRepository.save(product);
+            }
         }
+
         return existingCategory;
     }
 
-    public void deleteCategory(Long categoryId, Long productId){
+    public void deleteCategory(Long categoryId, Long productId) {
         categoryRepository.deleteById(categoryId);
-        String newCategoryName = "Deleted_CategoryName";
-        Product product = productRepository.findById(productId).orElse(null);
-        product.setCategoryName(newCategoryName);
-        productRepository.save(product);
+    }
+
+    public Category createCategorySelf(CategoryRequest categoryRequest) {
+        Category newCategory = new Category();
+        newCategory.setCategoryName(categoryRequest.getCategoryName());
+        return categoryRepository.save(newCategory);
     }
 }
 

@@ -12,6 +12,7 @@ import java.util.List;
 public class ProductService {
       private ProductRepository productRepository;
 
+
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -55,5 +56,9 @@ public class ProductService {
         }else {
             /* Exception */
         }
+    }
+
+    public List<Product> getProductByCategoryId(Long categoryId) {
+        return productRepository.findByCategoryCategoryId(categoryId);
     }
 }
