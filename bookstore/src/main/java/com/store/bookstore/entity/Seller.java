@@ -13,13 +13,20 @@ public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long sellerId;
+    private Long id;
 
     @Column(name = "name")
-    private String name;
+    private String firstName;
 
     @Column(name = "lastName")
-    private String lastname;
+    private String lastName;
+
+    @Column(name = "companyName")
+    private String companyName;
+
+    @Column(name = "phoneNumber")
+    private Long phoneNumber;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

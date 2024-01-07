@@ -28,6 +28,7 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
+
     @GetMapping("/user/{username}/{email}")
     public ResponseEntity<User> findByUsernameAndEmail(
             @PathVariable String username,
@@ -43,7 +44,7 @@ public class UserController {
 
     @GetMapping("/currentUser")
     public User getCurrentUser(){
-       return userService.getCurrentUser();
+        return userService.getCurrentUser();
     }
 
    @PostMapping("/login")
@@ -55,7 +56,6 @@ public class UserController {
             // If username or password wrong the result will return 401 UNAUTHORIZED
             return new ResponseEntity<>(token, HttpStatus.UNAUTHORIZED);
         }
-
    }
 
 

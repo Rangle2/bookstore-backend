@@ -58,8 +58,11 @@ public class UserService {
         if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
             String username = userDetails.getUsername();
+            User existUser = userRepository.findByUsername(username);
 
-            return userRepository.findByUsername(username);
+            if (existUser != null) {
+                return existUser;
+            }
         }
 
         return null;
