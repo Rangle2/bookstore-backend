@@ -7,7 +7,6 @@
     <list default="true" id="1c2b40bc-09f7-470c-9605-db106e811874" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/UserService.java" afterDir="false" />
     </list>

@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -24,14 +25,12 @@ public class RoleService {
     }
 
 
-
-
-    public Role getRoleName(RoleName roleName){
+    public Role getRoleName(RoleName roleName) {
         return roleRepository.findByName(roleName).orElse(null);
     }
 
     @Transactional
-    public Role changeRole(User user, Role newRole){
+    public Role changeRole(User user, Role newRole) {
 
         user.getRoles().clear();
         user.getRoles().add(newRole);
@@ -41,6 +40,4 @@ public class RoleService {
         return newRole;
 
     }
-
-
 }

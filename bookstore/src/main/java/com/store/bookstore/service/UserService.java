@@ -17,6 +17,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
+
 @Service
 public class UserService {
     private UserRepository userRepository;
@@ -155,6 +158,16 @@ public class UserService {
        }else {
            return new ResponseEntity<>(checkedUser, HttpStatus.NOT_FOUND);
        }
+    }
+
+    public Set<Role> getRolesByUsername(String username) {
+        User existUser = userRepository.findByUsername(username);
+
+        if (existUser != null) {
+            return existUser.getRoles();
+        }
+
+        return null; // Return null if the user doesn't exist
     }
 }
 

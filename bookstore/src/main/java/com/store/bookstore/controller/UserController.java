@@ -1,5 +1,6 @@
 package com.store.bookstore.controller;
 
+import com.store.bookstore.entity.Role;
 import com.store.bookstore.entity.User;
 import com.store.bookstore.request.AdminRequest;
 import com.store.bookstore.request.UserChangeRequest;
@@ -8,6 +9,8 @@ import com.store.bookstore.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/user")
@@ -40,6 +43,13 @@ public class UserController {
             return new ResponseEntity<>(user, HttpStatus.NOT_FOUND);
         }
     }
+
+
+    @GetMapping("/role/{username}")
+    public Set<Role> findByUserRole(@PathVariable String username){
+        return userService.getRolesByUsername(username);
+    }
+
 
 
     @GetMapping("/currentUser")
