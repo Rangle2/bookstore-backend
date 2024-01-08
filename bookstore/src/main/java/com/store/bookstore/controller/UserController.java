@@ -50,8 +50,6 @@ public class UserController {
         return userService.getRolesByUsername(username);
     }
 
-
-
     @GetMapping("/currentUser")
     public User getCurrentUser(){
         return userService.getCurrentUser();

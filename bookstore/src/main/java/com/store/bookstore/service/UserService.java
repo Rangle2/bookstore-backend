@@ -83,11 +83,12 @@ public class UserService {
     public User createUser(UserRequest userRequest) throws Exception {
 
             User newUser = new User();
+            newUser.setFirstname(userRequest.getFirstname());
+            newUser.setLastname(userRequest.getLastname());
             newUser.setUsername(userRequest.getUsername());
             newUser.setEmail(userRequest.getEmail());
             String encodedPass = passwordService.encodePassword(userRequest.getPassword());
             newUser.setPassword(encodedPass);
-
 
             Role newRole = roleService.getRoleName(RoleName.ROLE_USER);
             newUser.getRoles().add(newRole);
