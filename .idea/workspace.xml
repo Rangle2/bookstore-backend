@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1c2b40bc-09f7-470c-9605-db106e811874" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/repos/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/repos/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/repos/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/repos/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore/src/main/java/com/store/bookstore/service/CartService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

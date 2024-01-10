@@ -1,5 +1,6 @@
 package com.store.bookstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,10 +25,7 @@ public class Cart {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_carts",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<User> users;
+    @Column(name = "user_id")
+    private Long userId;
 }
+
