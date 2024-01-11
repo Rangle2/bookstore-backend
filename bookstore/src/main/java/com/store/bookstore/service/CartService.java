@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,12 +31,16 @@ public class CartService {
         return cartRepository.findById(cartId).orElseThrow(() -> new RuntimeException("Cart not found"));
     }
 
-    public Cart getUserCart(Long userId){
+    public  Cart getUserCart(Long userId){
         Cart userCart = cartRepository.findCartByUserId(userId);
         if (userCart == null){
             throw new RuntimeException("User Not found");
         }
         return userCart;
+    }
+
+    public List<Cart> findAllByUserId(Long userId){
+        return cartRepository.findAllByUserId(userId);
     }
 
     public Cart createUserCart(Long userId, CartRequest cartRequest) {
@@ -62,6 +67,8 @@ public class CartService {
                 newCart.setPrice(cartRequest.getPrice());
                 newCart.setQuantity(cartRequest.getQuantity());
                 newCart.setUserId(userId);
+                newCart.setProductId(cartRequest.getProductId());
+                newCart.setProductImg(cartRequest.getProductImg());
                 cartRepository.save(newCart);
                 return newCart;
             }
@@ -70,6 +77,7 @@ public class CartService {
             throw new RuntimeException("User Not Found");
         }
     }
+
 
     
 
@@ -90,5 +98,8 @@ public class CartService {
     public void deleteUserCartById(Long cartId){
         cartRepository.deleteById(cartId);
     }
+
+
+
 
 }

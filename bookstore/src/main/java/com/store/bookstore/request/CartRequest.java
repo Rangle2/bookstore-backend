@@ -9,4 +9,6 @@ public class CartRequest {
     private String productName;
     private BigDecimal price;
     private Integer quantity;
+    private Long productId;
+    private String productImg;
 }

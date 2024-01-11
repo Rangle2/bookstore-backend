@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -26,7 +28,7 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/{username}")
     public User findByUsername(@PathVariable String username){
         return userService.getUserByUsername(username);
     }
@@ -50,22 +52,38 @@ public class UserController {
         return userService.getRolesByUsername(username);
     }
 
+
+
     @GetMapping("/currentUser")
     public User getCurrentUser(){
         return userService.getCurrentUser();
     }
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginAuth(@RequestBody UserRequest userRequest) throws Exception {
+        try {
+            String token = userService.authUser(userRequest);
+            String name = userService.findUserFirstName(userRequest.getUsername());
+            String lastname = userService.findUserLastName(userRequest.getUsername());
+            Long userId = userService.findUserIdByUsername(userRequest.getUsername());
 
-   @PostMapping("/login")
-   public ResponseEntity<String> loginAuth(@RequestBody UserRequest userRequest) throws Exception {
-        String token =  userService.authUser(userRequest);
-        if (token != null){
-            return new ResponseEntity<>(token, HttpStatus.ACCEPTED);
-        }else {
-            // If username or password wrong the result will return 401 UNAUTHORIZED
-            return new ResponseEntity<>(token, HttpStatus.UNAUTHORIZED);
+            if (token != null && userId != null) {
+                // If both token and userId are available, return them with ACCEPTED status
+                Map<String, Object> responseMap = new HashMap<>();
+                responseMap.put("token", token);
+                responseMap.put("userId", userId);
+                responseMap.put("firstName", name);
+                responseMap.put("lastName", lastname);
+
+                return new ResponseEntity<>(responseMap, HttpStatus.ACCEPTED);
+            } else {
+                // If username or password is incorrect, return UNAUTHORIZED status
+                return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
+            }
+        } catch (Exception e) {
+            // Handle other exceptions (e.g., database errors, etc.)
+            return new ResponseEntity<>("Error during login", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-   }
-
+    }
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@RequestBody UserRequest userRequest) throws Exception {

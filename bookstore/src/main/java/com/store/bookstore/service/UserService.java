@@ -170,5 +170,20 @@ public class UserService {
 
         return null; // Return null if the user doesn't exist
     }
+
+    public Long findUserIdByUsername(String username) {
+        Long userId = userRepository.findUserIdByUsername(username);
+        return userId;
+    }
+
+    public String findUserFirstName(String username){
+        String firstName = userRepository.findUserFirstName(username);
+        return firstName;
+    }
+
+    public String findUserLastName(String username){
+        String lastName = userRepository.findUserLastName(username);
+        return lastName;
+    }
 }
 
